@@ -1,0 +1,16 @@
+# Bundler state
+/.bundle
+/vendor/bundle
+
+# Temporary and log files
+/log
+/tmp
+/coverage
+/spec/tmp
+/profiler
+
+# IDE specific files
+.tags*
+*.sublime-project
+*.sublime-workspace
+**.swp

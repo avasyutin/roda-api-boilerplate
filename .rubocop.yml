@@ -1,0 +1,35 @@
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/**/*'
+  TargetRubyVersion: 2.2
+
+Metrics/LineLength:
+  Max: 130
+
+Style/NumericLiterals:
+  MinDigits: 15
+
+Layout/SpaceBeforeBlockBraces:
+  EnforcedStyle: space
+
+Layout/SpaceInsideBrackets:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 50
+
+Metrics/ClassLength:
+  Max: 150
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
