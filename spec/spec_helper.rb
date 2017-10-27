@@ -2,7 +2,6 @@
 
 unless ENV['SKIP_SIMPLECOV'] == '1'
   require 'simplecov'
-  require 'simplecov-cobertura'
 
   SimpleCov.formatters = [SimpleCov::Formatter::HTMLFormatter]
   SimpleCov.start do
@@ -13,7 +12,12 @@ end
 
 ENV['RACK_ENV'] = 'test'
 
+require 'rake'
 require 'rack/test'
+
+load 'lib/tasks/db.rake'
+Rake::Task['db:migrate'].invoke
+
 require File.expand_path('../../boot', __FILE__)
 
 Dir[RodaApiBoilerplate.root.join('spec/support/**/*.rb')].each { |f| require f }
