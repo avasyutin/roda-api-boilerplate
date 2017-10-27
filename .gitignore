@@ -14,3 +14,8 @@
 *.sublime-project
 *.sublime-workspace
 **.swp
+
+# Sensetive data
+.env
+.env.development
+.env.test

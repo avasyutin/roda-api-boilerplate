@@ -5,12 +5,15 @@ RSpec.describe '/api/v1/users', type: :request do
     get('/api/v1/users')
   end
 
+  let!(:user) { User.create(email: 'j.doe@example.com') }
+
   before { do_request }
 
   it 'returns 200 and correct response' do
     expect(response.status).to eq 200
 
     body = json(response.body)
-    expect(body['path']).to eq '/api/v1/users'
+    expect(body.size).to eq 1
+    expect(body[0]['email']).to eq User.first.email
   end
 end

@@ -1,0 +1,3 @@
+DATABASE_URL=postgres://localhost/roda_api_boilerplate_development
+POOL_SIZE=5
+

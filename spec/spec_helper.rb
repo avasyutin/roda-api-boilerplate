@@ -11,6 +11,8 @@ unless ENV['SKIP_SIMPLECOV'] == '1'
   end
 end
 
+ENV['RACK_ENV'] = 'test'
+
 require 'rack/test'
 require File.expand_path('../../boot', __FILE__)
 
@@ -37,10 +39,21 @@ RSpec.configure do |config|
   config.filter_run_when_matching :focus
   config.example_status_persistence_file_path = 'tmp/examples.txt'
   config.disable_monkey_patching!
-  config.warnings = true
+  config.warnings = false
   config.default_formatter = 'doc' if config.files_to_run.one?
   config.profile_examples = 10
   config.order = :random
 
   Kernel.srand(config.seed)
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
 end

@@ -3,7 +3,7 @@
 class RodaApiBoilerplate
   route('users', 'api/v1') do |r|
     r.get do
-      params.merge(path: request.path)
+      User.all.to_json
     end
   end
 end

@@ -9,6 +9,8 @@ class RodaApiBoilerplate < Roda
   Unreloader.require('./routes') {}
 
   route do |r|
+    response['Content-Type'] = 'application/json'
+
     r.multi_route
 
     r.root do
