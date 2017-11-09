@@ -18,7 +18,7 @@ require 'rack/test'
 load 'lib/tasks/db.rake'
 Rake::Task['db:migrate'].invoke
 
-require File.expand_path('../../boot', __FILE__)
+require File.expand_path('../../config/boot', __FILE__)
 
 Dir[RodaApiBoilerplate.root.join('spec/support/**/*.rb')].each { |f| require f }
 

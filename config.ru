@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-require_relative './boot'
+require_relative './config/boot'
 
 run(RodaApiBoilerplate.development? ? Unreloader : RodaApiBoilerplate.freeze.app)
