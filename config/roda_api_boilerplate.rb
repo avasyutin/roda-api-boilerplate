@@ -6,6 +6,8 @@ class RodaApiBoilerplate < Roda
   plugin :indifferent_params
   plugin :json
 
+  use Rack::CommonLogger, LOGGER
+
   Unreloader.require('./routes') {}
 
   route do |r|
@@ -20,5 +22,9 @@ class RodaApiBoilerplate < Roda
 
   def self.root
     Pathname.new(File.expand_path('../..', __FILE__))
+  end
+
+  def self.logger
+    LOGGER
   end
 end

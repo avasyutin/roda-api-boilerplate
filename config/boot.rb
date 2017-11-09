@@ -9,7 +9,12 @@ Bundler.require(:default, env)
 
 Dotenv.load(['.env', env].compact.join('.'), '.env')
 
-Unreloader = Rack::Unreloader.new(subclasses: %w['Roda Sequel::Model'], reload: is_dev) { RodaApiBoilerplate }
+require 'logger'
+
+LOGGER = Logger.new("./log/#{env}.log")
+LOGGER.level = Logger::DEBUG
+
+Unreloader = Rack::Unreloader.new(subclasses: %w[Roda Sequel::Model], logger: LOGGER, reload: is_dev) { RodaApiBoilerplate }
 Unreloader.require('./config/roda_api_boilerplate.rb')
 
 require_relative 'models'
